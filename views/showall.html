@@ -1,0 +1,43 @@
+<html>
+<head>
+        <head>
+                
+                <link rel="stylesheet" href="style.css">
+        </head>
+    <style>
+        table,th,td {
+            border: 1px solid black;
+        }
+        
+    </style>
+</head>
+<body>
+    <h1 > <a href="/">Home</a>
+        <a href="addnew">addnew</a>
+    </h1>
+    </br>
+    <h3>
+        <table>
+            <tr>
+                <td>Name</td>
+                <td>Due date</td>
+                <td>Description</td>
+            
+            </tr>
+            <% for(var i =0; i< db.length;i++){ %>
+                <tr>
+                    <td>
+                        <%= db[i].name %>
+                    </td>
+                    <td>
+                        <%= db[i].duedate %>
+                    </td>
+                    <td>
+                        <%= db[i].Description %>
+                    </td>
+                </tr>
+                <% } %>
+            </table>
+    </h3>
+</body>
+</html>

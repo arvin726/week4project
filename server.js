@@ -1,23 +1,32 @@
 var express = require('express');
 var app = express();
+
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
-app.use(express.static('public'));
-let date = new Date();
 
-app.get('/getdate', function (req, res) {
-    res.render('index.html', {
-        day: date.getDay(),
-        mon: date.getMonth(),
-        year: date.getFullYear()
-    });
-});
+var bodyparse=require('body-parser');
+app.use(bodyparse.urlencoded({extended:false}));
 
-app.get('/gettime', function (req, res) {
-    res.render('index.html', {
-        hour: date.getDay(),
-        min: date.getMinutes(),
-        sec: date.getSeconds()
-    });
+app.use(express.static('views'));
+app.use(express.static('img'));
+app.use(express.static('css'));
+
+var filePath=__dirname +"/views/";
+db=[];
+app.get("/",function(req,res){
+    let fileName= filePath +"index.html";
+    res.sendFile(fileName);
 });
+app.get("/addnew",function(req,res){
+    let fileName =filePath +"addnew.html";
+    res.sendFile(fileName);
+})
+app.get("/showall",function(req,res){
+    res.render("showall.html",{data:db});
+})
+app.post("/registration",function(req,res){
+    let data=req.body;
+    db.push(data);
+    res.render("showall.html");
+})
 app.listen(8080);
