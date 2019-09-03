@@ -1,19 +1,27 @@
 <html>
         <head>
                 
-                <link rel="stylesheet" href="style.css">
+                <link rel="stylesheet" href="./style.css">
             </head>
 <body>
     <h1>
-            <a href="/">Home</a>
-            <a href="showall">showall</a>
+        <a href="/">Home</a>
+        <a href="addnew">addnew</a>
+        <a href="showall">showall</a>
+        <a href="delete">delete</a>
+        <a href="deleteall">delete all</a>
+        <a href="update">update</a>
     </h1>
         
     <form action="/registration" method="POST">
     <label>Task name</label>
-    <input type="text" name="name"/> </br>
+    <input type="text" name="taskname"/> </br>
+    <label>Assign to</label>
+    <input type="text" name="assignto"/> </br>
     <label>Task due</label>
-    <input type="text"  name="duedate"/> </br>
+    <input type="date"  name="duedate"/> </br>
+    <label>Task status</label>
+    <input type="text" name="status"/> </br>
     <label> Task Desc</label>
     <input type="text"  name="Description"/></br>
     <button ><input type="submit" ></button>
