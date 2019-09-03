@@ -60,7 +60,7 @@ app.get("/findtasks/:a/:b",function(req,res){
     let b =parseInt(req.params.b);
     let filter= { $and: [ { taskid: { $gt: a } }, { taskid: { $lt: b} } ] }
     db.collection('task').find(filter).toArray(function(err,result){
-        if(err){
+        if(error){
             res.send("not find")
         }
         else{
