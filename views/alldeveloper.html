@@ -18,40 +18,48 @@
         <a href="delete">delete</a>
         <a href="deleteall">delete all</a>
         <a href="update">update</a>
+        <a href="showall">showall</a>
         <a href="developer">add developer</a>
-        <a href="alldeveloper">all developer</a>
     </h1>
     </br>
     <h3>
         <table>
             <tr>
-                <td>ID</td>
-                <td>Name</td>
-                <td>Assign to</td>
-                <td>Due date</td>
-                <td>Status</td>
-                <td>Description</td>
+                <td>id</td>
+                <td>firstname</td>
+                <td>lastname</td>
+                <td>level</td>
+                <td>state</td>
+                <td>suburb</td>
+                <td>street</td>
+                <td>unit</td>
             
             </tr>
             <% for(var i =0; i< db.length;i++){ %>
                 <tr>
                     <td>
-                        <%= db[i].taskid %>
+                        <%= db[i]._id %>
                     </td>
                     <td>
-                        <%= db[i].taskname %>
+                        <%= db[i].name.firstname %>
                     </td>
                     <td>
-                        <%= db[i].assignto %>
+                        <%= db[i].name.lastname %>
                     </td>
                     <td>
-                        <%= db[i].duedate %>
+                        <%= db[i].level %>
                     </td>
                     <td>
-                        <%= db[i].taskstatus %>
+                        <%= db[i].address.state %>
                     </td>
                     <td>
-                        <%= db[i].taskde %>
+                        <%= db[i].address.suburb %>
+                    </td>
+                    <td>
+                        <%= db[i].address.street %>
+                    </td>
+                    <td>
+                        <%= db[i].address.unit %>
                     </td>
                 </tr>
                 <% } %>
