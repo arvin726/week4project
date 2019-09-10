@@ -44,7 +44,7 @@ app.get("/update",function(req,res){
 })
 
 app.get("/deleteall",function(req,res){
-    task.deleteMany({taskstatus:'completed'}, function (err, doc) {
+    task.deleteMany({taskstatus:'Complete'}, function (err, doc) {
 
     });
     res.redirect("/showall")
@@ -66,6 +66,22 @@ app.get("/alldeveloper",function(req,res){
         res.render('alldeveloper', { db:docs });
     });
 });
+app.get('/:oldfirstname/:newfirstname',function(req,res){
+    let oldfirstname= req.params.oldfirstname;
+    let newfirstname= req.params.newfirstname;
+    // let query ={name:{$elemMath:{firstname:oldfirstname} }}
+    let query ={'name.firstname':oldfirstname}    
+    console.log(query);
+    let change ={ $set: {'name.firstname':newfirstname}};
+    console.log(change)
+    developer.updateMany(query,change,function(err,docs){
+        if(err) throw err 
+        else{
+            console.log(docs);
+            res.redirect('/alldeveloper');
+        }
+    })
+})
 
 
 app.post("/registration",function(req,res){
@@ -120,7 +136,7 @@ app.post("/deveregistration",function(req,res){
         street:date.street,
         unit:date.unit}},function(err,docs){
             if(err){
-                res.send("input no correct");
+                res.send(" level input no correct");
             }else{
                res.redirect('/alldeveloper');
             }

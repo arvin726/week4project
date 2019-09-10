@@ -15,7 +15,11 @@ let taskSchema = mongoose.Schema({
         type: Date
     },
     taskstatus:{
-        type:String
+        type:String,
+        validate: {
+            validator: function (taskstatus) {
+                return  taskstatus == 'InProgress' || taskstatus == 'Complete' 
+            }}
     },
     taskde: {
         type: String
